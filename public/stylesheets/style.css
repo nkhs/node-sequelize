@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+.centralize{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-attachment: fixed;
+}
+.background{
+  background-image: url('../images/cloud.svg');
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 0;
+}
+
+a {
+  color: #00B7FF;
+}
