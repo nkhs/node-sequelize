@@ -7,33 +7,10 @@ const db = require("../models");
 
 describe('db', () => {
 
-    it('A B C', async () => {
+    it('Check Product: m:n relationship', async () => {
 
-        const whereCondition = {
-            [Op.and]: [
-                {
-                    [Op.or]: [
-                        { '$B.userId$': 100 },
-                        { '$C.userId$': 100 }
-                    ]
-                },
-                {
-                    [Op.or]: [
-                        { '$B.orgId$': 101 },
-                        { '$C.orgId$': 102 }
-                    ]
-                },
-                {
-                    [Op.or]: [
-                        { '$B.contentId$': 'content1' },
-                        { '$C.profileId$': 'profileId1' }
-                    ]
-                }
-            ]
-        }
-        let A = await db.A.findAll({
-            include: ['B', 'C'],
-            where: whereCondition
+        let A = await db.Product.findAll({
+            include: ['file'],
         });
         var aList = JSON.parse(JSON.stringify(A))
         console.log(aList)
