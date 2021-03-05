@@ -6,11 +6,37 @@ const Op = Sequelize.Op;
 const db = require("../models");
 
 describe('db', () => {
-    it('insert', async () => {
-        let createPost = await db.user.create({
-            name: 'test'
+
+    it('A B C', async () => {
+
+        const whereCondition = {
+            [Op.and]: [
+                {
+                    [Op.or]: [
+                        { '$B.userId$': 100 },
+                        { '$C.userId$': 100 }
+                    ]
+                },
+                {
+                    [Op.or]: [
+                        { '$B.orgId$': 101 },
+                        { '$C.orgId$': 102 }
+                    ]
+                },
+                {
+                    [Op.or]: [
+                        { '$B.contentId$': 'content1' },
+                        { '$C.profileId$': 'profileId1' }
+                    ]
+                }
+            ]
+        }
+        let A = await db.A.findAll({
+            include: ['B', 'C'],
+            where: whereCondition
         });
-        var user = JSON.parse(JSON.stringify(createPost))
-        console.log(user, user.id)
+        var aList = JSON.parse(JSON.stringify(A))
+        console.log(aList)
+        return
     })
 })
