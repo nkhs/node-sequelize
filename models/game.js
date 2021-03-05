@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         notes: {
             type: DataTypes.TEXT,
-        },
+        }
     }, {
         sequelize,
         modelName: "game",
