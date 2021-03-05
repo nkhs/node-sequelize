@@ -7,7 +7,7 @@ const db = require("../models");
 
 describe('db', () => {
 
-    it('Check Product: m:n relationship', async () => {
+    it('SUM', async () => {
 
         var list = await db.Post.findAll({
             where: {
