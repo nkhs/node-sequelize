@@ -2,12 +2,13 @@ require("dotenv").config();
 const config = {
     "dbConfig": {
         "dialect": process.env.DbDialect,
-        
+
         "logging": false,
         "database": process.env.DbName,
         "host": process.env.DbHost,
         "username": process.env.DbUserName,
         "password": process.env.DbPassword,
+        "storage": 'db.sqlite',
         "replication": {
             "read": [
                 {

@@ -13,11 +13,11 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    console.log(db.Product.single)
-    var user = await db.user.findOne() || {};
+    var user = (await db.user.findOne()) || {};
     await queryInterface.bulkInsert("games", [
       {
         playerId: user.id,
+        leaderId: user.id,
         createdAt: new Date(),
         updatedAt: new Date()
       },

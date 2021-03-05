@@ -16,7 +16,8 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "sqlite3": "^5.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
