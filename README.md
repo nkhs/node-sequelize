@@ -11,3 +11,8 @@ npm start
 ```
 http://localhost:3006/api/game
 ```
+
+Deployed Heroku
+```
+https://node-sequelize-test.herokuapp.com/api/game
+```
