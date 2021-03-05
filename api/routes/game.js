@@ -6,6 +6,10 @@ let {
   game
 } = require("../controllers");
 
+
+
+
+
 router.get('/', game.list);
 router.post('/', game.create);
 router.delete('/:id', game.delete);
@@ -33,7 +37,7 @@ var upload = multer({ //multer settings
 
 router.put('/upload/:idUsuario', upload.single('imagen'), (req, res) => {
   try {
-    
+
     // res.send(req.file);
 
     const { idUsuario } = req.params;

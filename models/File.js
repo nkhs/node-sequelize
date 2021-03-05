@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     File.init({
-        name: DataTypes.STRING,
-        type: DataTypes.STRING,
-        url: DataTypes.STRING,
+        Name: { type: DataTypes.STRING },
+        Phone: { type: DataTypes.STRING },
+        Email: { type: DataTypes.STRING },
     }, {
         sequelize,
         modelName: "File",
