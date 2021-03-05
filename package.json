@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npx nodemon ./bin/www",
     "db": "sequelize db:migrate",
-    "test": "mocha --recursive --timeout 10000"
+    "test": "mocha --recursive"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
