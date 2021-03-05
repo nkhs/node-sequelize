@@ -3,7 +3,7 @@ const config = {
     "dbConfig": {
         "dialect": process.env.DbDialect,
 
-        "logging": true,
+        "logging": false,
         "database": process.env.DbName,
         "host": process.env.DbHost,
         "username": process.env.DbUserName,

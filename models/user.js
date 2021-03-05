@@ -18,24 +18,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
         },
         password: { type: DataTypes.STRING },
-        confirmation: {
-            type: DataTypes.STRING,
-            // validate: {
-            //     notNull: false, // this is boolean
-            //     areEquals: (value) => {
-            //         // var tt = JSON.parse(JSON.stringify(this.password))
-            //         console.log(this.password)
-            //         // console.log(value, this.password, value != this.password, typeof value, typeof this.password, value.length, this.password.length,)
-                    
-            //         if (value != this.password) {
-            //             console.log('**')
-            //             throw new Error("Not Equals");
-            //         }
-
-            //         return true
-            //     }
-            // },
-        },
+        confirmation: { type: DataTypes.STRING, },
+        img: { type: DataTypes.STRING, },
 
     }, {
         sequelize,

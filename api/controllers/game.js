@@ -4,6 +4,7 @@ const db = require(__dirname + "/../../models");
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+
 module.exports = {
 
   create: async (req, res, next) => {
