@@ -7,34 +7,29 @@ const db = require("../models");
 
 describe('db', () => {
 
-    it('SUM', async () => {
+    it('HOOK Test', async () => {
 
-        var list = await db.Post.findAll({
-            where: {
-                type: 'random',
-            },
-            attributes: [
-                'id',
-                'createdAt',
-                [Sequelize.fn('SUM', Sequelize.col('other.amount')), 'totalAmount'],
-            ],
-            include: [
-                {
-                    model: db.Other,
-                    attributes: [],
-                    required: false,
-                    duplicating: false,
-                    as: 'other',
-                    where: {
-                        amount: { [Op.gte]: 0 }
-                    }
-                },
-            ],
-            order: [['createdAt', 'DESC']],
-            raw: true,
-            group: ['Post.id'],
-        });
-        console.log(JSON.parse(JSON.stringify(list)))
-        return
+        // const [isUpdated] = await db.user.update(
+        //     { name: 'kk' },
+        //     { where: { id: 1 }, individualHooks: true }
+        // );
+        await db.user.upsert({
+            name: 'kg',
+            img: 'image',
+
+            age: -5
+        })
+
+        // var B = await db.B.findAll({
+        //     limit: 2,
+        //     include: [{
+        //         model: db.A,
+        //         as: 'A',
+        //         required: false,
+        //         limit: 2,
+        //     }
+        //     ]
+        // })
+        // console.log(JSON.parse(JSON.stringify(B)))
     })
 })
