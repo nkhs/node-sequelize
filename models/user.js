@@ -1,33 +1,23 @@
-"use strict";
-const { Model } = require("sequelize");
-module.exports = (sequelize, DataTypes) => {
-    class user extends Model {
-    }
-    user.init({
-        name: { type: DataTypes.STRING, },
-        img: { type: DataTypes.STRING, },
-        description: { type: DataTypes.JSON, },
-        age: {
-            type: DataTypes.INTEGER,
-            validate: {
-                min: 0,
-                max: 50,
-            },
-        },
+module.exports = (sequelize, Sequelize) => {
+    const user = sequelize.define("User", {
+        name: Sequelize.STRING,
+        ProfileId: { type: Sequelize.BIGINT, allowNull: false, defaultValue: 1 }
     }, {
-        sequelize,
-        modelName: "user",
-        defaultScope: {
-            attributes: { exclude: ["createdAt", "updatedAt"] }
-        },
         hooks: {
-            afterUpdate(instance, options) {
-                console.log('after update')
-                // let changed = instance._changed;
-                // console.log(changed, options);
-
+            beforeCreate: function (user, options) {
+                user.getStreamUserId = user.email ? user.email.replace(/[^a-zA-Z-_]/g, "") + configVars.GETSTREAM_SUFFIX : null;
             }
-        },
+        }
     });
+
+    user.associate = function (model) {
+        user.belongsTo(model.Profile, {
+            as: 'profile',
+            foreignKey: {
+                name: 'ProfileId'
+            }
+        });
+    }
+
     return user;
 };

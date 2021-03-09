@@ -15,6 +15,12 @@ module.exports = {
         defaultValue: '',
       },
 
+      ProfileId: {
+        type: DataTypes.BIGINT,
+        allowNull: false,
+        defaultValue: 1
+      },
+
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

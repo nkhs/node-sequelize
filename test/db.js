@@ -7,28 +7,16 @@ const db = require("../models");
 
 describe('db', () => {
 
-    it('Count Test', async () => {
+    it('User Test', async () => {
         // //Insert Mockup Data
-        // await db.Post.create({ type: 'test' })
-
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
-        await db.PostLike.create({ postId: 1 })
 
 
-        var post = await db.Post.findAll({
-            attributes: [
-                'id',
-                [db.Sequelize.fn('COUNT', db.Sequelize.col('postlikes.id')), 'likeCount',],
-            ],
-            include: ['postlikes']
-        })
-        console.log(JSON.parse(JSON.stringify(post)))
+        // await db.Profile.create({ name: 'Test Profile' })
+        // await db.User.create({ ProfileId: 1 })
+
+
+        var u = await db.User.findAll({ include: ['profile'] })
+        console.log(JSON.parse(JSON.stringify(u)))
         process.exit()
     })
 })
