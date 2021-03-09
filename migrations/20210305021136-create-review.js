@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, DataTypes) => {
-    await queryInterface.createTable("profiles", {
+    await queryInterface.createTable("reviews", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,10 +10,8 @@ module.exports = {
         type: DataTypes.INTEGER
       },
 
-      name: {
-        type: DataTypes.STRING,
-        defaultValue: '',
-      },
+      user_id: { type: DataTypes.INTEGER, },
+      detail: { type: DataTypes.STRING, },
 
       createdAt: {
         allowNull: false,
@@ -27,6 +25,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('profiles');
+    await queryInterface.dropTable('reviews');
   }
 };

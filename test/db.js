@@ -10,20 +10,13 @@ describe('db', () => {
     it('User Test', async () => {
         // //Insert Mockup Data
 
+        // await db.User.create({ name: 'Test User' })
+        // await db.Review.create({ detail: 'Test Review', user_id: 1 })
 
-        // await db.Profile.create({ name: 'Test Profile' })
-        // await db.User.create({ ProfileId: 1 })
-
-
-        var u = await db.User.findAll({ include: ['profile'] })
-        console.log(JSON.parse(JSON.stringify(u)))
-    })
-
-    it('Check ProfileId: default value', async () => {
-        // //Insert Mockup Data
-        var u = await db.User.create({ name: 'Test User' })
-
-        console.log(JSON.parse(JSON.stringify(u)))
-
+        var r = await db.Review.findOne({
+            where: {},
+            include: ['user']
+        });
+        console.log(JSON.parse(JSON.stringify(r)))
     })
 })
