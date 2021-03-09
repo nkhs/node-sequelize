@@ -17,6 +17,13 @@ describe('db', () => {
 
         var u = await db.User.findAll({ include: ['profile'] })
         console.log(JSON.parse(JSON.stringify(u)))
-        process.exit()
+    })
+
+    it('Check ProfileId: default value', async () => {
+        // //Insert Mockup Data
+        var u = await db.User.create({ name: 'Test User' })
+
+        console.log(JSON.parse(JSON.stringify(u)))
+
     })
 })
