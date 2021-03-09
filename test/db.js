@@ -8,29 +8,27 @@ const db = require("../models");
 describe('db', () => {
 
     it('Count Test', async () => {
-        //`SELECT videos.*, COUNT(*) AS views FROM views INNER JOIN videos WHERE views.videoId = videos.id GROUP BY videoId ORDER BY views DESC`
+        // //Insert Mockup Data
+        // await db.Post.create({ type: 'test' })
+
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
+        await db.PostLike.create({ postId: 1 })
 
 
-        // //Insert Test Data
-        // // await db.Video.create({ title: 'k1' })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-        // await db.View.create({ videoId: 1 })
-
-
-        var v = await db.View.findAll({
+        var post = await db.Post.findAll({
             attributes: [
-                [Sequelize.fn(`COUNT`, Sequelize.col("videoId")), 'count'],
+                'id',
+                [db.Sequelize.fn('COUNT', db.Sequelize.col('postlikes.id')), 'likeCount',],
             ],
-            // group: ['videoId'],
-            include: ['video']
+            include: ['postlikes']
         })
-        console.log(JSON.parse(JSON.stringify(v)))
+        console.log(JSON.parse(JSON.stringify(post)))
         process.exit()
     })
 })

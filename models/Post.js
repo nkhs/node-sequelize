@@ -3,21 +3,17 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     class Post extends Model {
         static associate(models) {
-            this.hasMany(models.Other, {
+            this.hasMany(models.PostLike, {
                 foreignKey: "postId",
-                as: "other",
+                as: "postlikes",
             });
         }
     }
-    Post.init(
-        {
-            type: { type: DataTypes.STRING },
-
-        },
-        {
-            sequelize,
-            modelName: "Post",
-        }
-    );
+    Post.init({
+        type: { type: DataTypes.STRING },
+    }, {
+        sequelize,
+        modelName: "Post",
+    });
     return Post;
 };
