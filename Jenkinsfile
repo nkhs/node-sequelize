@@ -36,8 +36,19 @@ pipeline {
     }
 
     stage('Second') {
-      steps {
-        echo 'what is tagewerwer'
+      parallel {
+        stage('Second') {
+          steps {
+            echo 'what is tagewerwer'
+          }
+        }
+
+        stage('second-second') {
+          steps {
+            sh 'npm i'
+          }
+        }
+
       }
     }
 
