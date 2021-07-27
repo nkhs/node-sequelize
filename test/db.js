@@ -1,19 +1,20 @@
 'use strick';
 
-
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const db = require("../models");
+const db = require('../models');
 
 describe('db', () => {
+    it('Insert', async () => {
+        const posts = await db.post.findAll({ include: ['account', 'thread'] });
+        console.log(JSON.parse(JSON.stringify(posts)));
 
-    it('Check Product: m:n relationship', async () => {
+        const threads = await db.thread.findAll({ include: ['account', 'posts'] });
+        console.log(JSON.parse(JSON.stringify(threads)));
 
-        let A = await db.Product.findAll({
-            include: ['file'],
-        });
-        var aList = JSON.parse(JSON.stringify(A))
-        console.log(aList)
-        return
-    })
-})
+        const accounts = await db.account.findAll({ include: ['account', 'posts'] });
+        console.log(JSON.parse(JSON.stringify(accounts)));
+
+        return;
+    });
+});
